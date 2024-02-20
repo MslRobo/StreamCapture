@@ -8,7 +8,6 @@ def CaptureImage(runFolder, runTime):
 
     # Name of the subfolder where you want to save the images
     img_folder_name = 'data/img'
-    video_folder_name = 'data/video'
 
     img_folder_name = os.path.join(img_folder_name, runFolder)
 
