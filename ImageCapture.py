@@ -2,7 +2,7 @@ import requests
 import time
 import os  # Import the os module
 
-def CaptureImage(runFolder, runTime):
+def CaptureImage(runFolder, runTime, spf):
     # URL of the picture that updates
     picture_url = 'https://cmlwebcam.transurban.com/wimages/webcam03.jpg'
 
@@ -19,7 +19,7 @@ def CaptureImage(runFolder, runTime):
     # duration = 24 * 60 * 60
     duration = runTime
 
-    # How often you want to download the picture (every 10 seconds)
+    # How often you want to download the picture in seconds
     interval = 1
 
     start_time = time.time()
@@ -37,4 +37,4 @@ def CaptureImage(runFolder, runTime):
             print("Failed to download image")
 
         # Wait for x seconds before downloading the next picture
-        time.sleep(interval)
+        time.sleep(spf)

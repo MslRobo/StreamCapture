@@ -3,9 +3,16 @@ import ImageCapture as ic
 
 if __name__ == '__main__':
 
+    spf = input("Seconds per frame: ")
+
+    if spf == "":
+        spf = 1
+    else:
+        spf = int(spf)
+
     # Duration for which you want to run this script (for testing, changed to 10 seconds)
     # runTime = 24 * 60 * 60
-    runTime = 60
+    runTime = 24 * 60 * 60
     img_folder_name = 'data/img'
     video_folder_name = 'data/video'
     
@@ -18,7 +25,7 @@ if __name__ == '__main__':
     img_folder_name = os.path.join(img_folder_name, runFolder)
     video_folder_name = os.path.join(video_folder_name, runFolder)
 
-    ic.CaptureImage(runFolder, runTime)
+    ic.CaptureImage(runFolder, runTime, spf)
 
     # Check if the folder exists, if not, create it
     if not os.path.exists(video_folder_name):
