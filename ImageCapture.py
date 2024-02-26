@@ -2,9 +2,10 @@ import requests
 import time
 import os  # Import the os module
 
-def CaptureImage(runFolder, runTime, spf):
+def CaptureImage(runFolder, runTime, spf, source):
     # URL of the picture that updates
-    picture_url = 'https://cmlwebcam.transurban.com/wimages/webcam03.jpg'
+    # picture_url = 'https://cmlwebcam.transurban.com/wimages/webcam03.jpg'
+    picture_url = source
 
     # Name of the subfolder where you want to save the images
     img_folder_name = 'data/img'
