@@ -1,4 +1,6 @@
 import os
+import sys
+import signal
 import argparse
 import ImageCapture as ic
 
@@ -18,7 +20,10 @@ def run(args):
     img_folder_name = os.path.join(img_folder_name, runFolder)
     video_folder_name = os.path.join(video_folder_name, runFolder)
 
-    ic.CaptureImage(runFolder, args.runtime, args.spf, args.source)
+    try:
+        ic.CaptureImage(runFolder, args.runtime, args.spf, args.source)
+    except:
+        print("An error has been raised")
 
     # Check if the folder exists, if not, create it
     if not os.path.exists(video_folder_name):
@@ -42,9 +47,23 @@ def parse_opt():
 
     return args
 
+# def signal_handler(sig, frame):
+#     # ffmpeg command with the output file placed in the subfolder
+#     global img_folder_name, video_folder_name
+#     if img_folder_name and video_folder_name:
+#         ffmpeg_command = f"ffmpeg -framerate {args.fps} -pattern_type glob -i '{img_folder_name}/image_*.jpg' -c:v libx264 -pix_fmt yuv420p {video_folder_name}/timelapse.mp4"
+#         os.system(ffmpeg_command)
+#     else:
+#         print("Either img_folder_name or video_folder name does not exist")
+
+#     sys.exit(0)
+
 
 
 
 if __name__ == '__main__':
     args = parse_opt()
+
+    # signal.signal(signal.SIGINT, signal_handler)
+
     run(args)
